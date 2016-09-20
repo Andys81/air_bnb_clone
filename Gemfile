@@ -32,6 +32,13 @@ gem 'clearance'
 # Use Figaro to protect privacy
 gem 'figaro'
 
+# Use bootstrap for CSS
+gem 'bootstrap', '~> 4.0.0.alpha4'
+
+# Use Omniauth to enable facebook login
+gem 'omniauth'
+gem 'omniauth-facebook'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
