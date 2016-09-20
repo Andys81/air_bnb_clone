@@ -35,6 +35,11 @@ gem 'figaro'
 # Use bootstrap for CSS
 gem 'bootstrap', '~> 4.0.0.alpha4'
 
+# Use tether for tool tips
+source 'https://rails-assets.org' do
+  gem 'rails-assets-tether', '>= 1.1.0'
+end
+
 # Use Omniauth to enable facebook login
 gem 'omniauth'
 gem 'omniauth-facebook'
