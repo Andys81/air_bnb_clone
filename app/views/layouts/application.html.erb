@@ -1,3 +1,7 @@
+
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,34 +10,120 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
+
+
 <body>
 
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.7&appId=189803801446399";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
 
 
-<%= yield %>
+<div class="container">
 
-</body>
-</html>
 
-    <div class="fb-login-button" data-max-rows="1" data-size="large" data-show-faces="false" data-auto-logout-link="false"></div>
-    
-    <% if signed_in? %>
-      Signed in as: <%= current_user.email %>
-      <%= button_to 'Sign out', sign_out_path, method: :delete %>
-    <% else %>
-      <%= link_to 'Sign in', sign_in_path %>
+<nav class="menu">
+  <ul class="active">
+    <li class="current-item"><%= link_to "Home", root_url %></li>
+    <li><%= link_to "Signup", "#" %></li>
+    <li>
+          <% if signed_in? %>
+        Signed in as: <%= current_user.email %>
+        <%= button_to 'Sign out', sign_out_path, method: :delete %>
+      <% else %>
+        
+        <a href="#" data-toggle="modal" data-target="#login-modal">Login</a>
+
+      <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog">
+        <div class="loginmodal-container">
+          <h1>Login to Your Account</h1><br>
+
+
+<!--           <form>
+          <input type="text" name="user" placeholder="Username">
+          
+          <input type="submit" name="login" class="login loginmodal-submit" value="Login">
+          </form> -->
+
+          
+<div id="clearance" class="sign-in">
+  <h2><%= t(".title") %></h2>
+    <%= form_for :session, url: session_path do |form| %>
+      <div class="text-field">
+        <%= form.label :email %>
+        <%= form.text_field :email, type: 'email' %>
+      </div>
+
+
+      <div class="password-field" name="pass" placeholder="Password">
+      <!-- <input type="password" > -->
+        <%= form.label :password %>
+        <%= form.password_field :password %>
+      </div>
+
+
+      <div class="submit-field">
+        <%= form.submit  %>
+      </div>
+
+      <div class="other-links">
+        <% if Clearance.configuration.allow_sign_up? %>
+          <%= link_to t(".sign_up"), sign_up_path %>
+        <% end %>
+        <%= link_to t(".forgot_password"), new_password_path %>
+      </div>
     <% end %>
+</div>
 
-    <div id="flash">
-      <% flash.each do |key, value| %>
-        <div class="flash <%= key %>"><%= value %></div>
+          <div class="login-help">
+          <a href="#">Register</a> - <a href="#">Forgot Password</a>
+          </div>
+        </div>
+      </div>
+      </div>
+
+
+
       <% end %>
-    </div>
+    </li>
+    <li><%= link_to "About Us", "#" %></li>
+    <li class="fb-login-button" data-max-rows="1" data-size="small" data-show-faces="false" data-auto-logout-link="false"></li>
+  </ul>
+</nav>
+
+
+    
+
+
+
+
+
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.7&appId=189803801446399";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
+
+
+  <%= yield %>
+
+      
+
+      <div id="flash">
+        <% flash.each do |key, value| %>
+          <div class="flash <%= key %>"><%= value %></div>
+        <% end %>
+      </div>
+
+
+  </body>
+
+</div>
+
+
+
+
+
+
+
