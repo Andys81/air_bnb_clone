@@ -16,7 +16,6 @@
 
 
 
-<div class="container">
 
 
 <nav class="menu">
@@ -25,15 +24,15 @@
     <li><%= link_to "Signup", "#" %></li>
     <li>
           <% if signed_in? %>
-        Signed in as: <%= current_user.email %>
-        <%= button_to 'Sign out', sign_out_path, method: :delete %>
+        <%= link_to 'Logout', sign_out_path, method: :delete %>
+      
       <% else %>
         
-        <a href="#" data-toggle="modal" data-target="#login-modal">Login</a>
+          <a href="#" data-toggle="modal" data-target="#login-modal">Login</a>
 
-      <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-        <div class="modal-dialog">
-        <div class="loginmodal-container">
+          <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+          <div class="modal-dialog">
+          <div class="loginmodal-container">
           <h1>Login to Your Account</h1><br>
 
 
@@ -44,38 +43,41 @@
           </form> -->
 
           
-<div id="clearance" class="sign-in">
-  <h2><%= t(".title") %></h2>
-    <%= form_for :session, url: session_path do |form| %>
-      <div class="text-field">
-        <%= form.label :email %>
-        <%= form.text_field :email, type: 'email' %>
-      </div>
+          <div id="clearance" class="sign-in">
+          <h2><%= t(".title") %></h2>
+          <%= form_for :session, url: session_path do |form| %>
+          <div class="text-field">
+            <%= form.label :email %>
+            <%= form.text_field :email, type: 'email' %>
+          </div>
 
 
-      <div class="password-field" name="pass" placeholder="Password">
-      <!-- <input type="password" > -->
-        <%= form.label :password %>
-        <%= form.password_field :password %>
-      </div>
+          <div class="password-field" name="pass" placeholder="Password">
+          <!-- <input type="password" > -->
+            <%= form.label :password %>
+            <%= form.password_field :password %>
+          </div>
 
 
-      <div class="submit-field">
-        <%= form.submit  %>
-      </div>
+          <div class="submit-field">
+          <%= form.submit  %>
+          </div>
 
-      <div class="other-links">
-        <% if Clearance.configuration.allow_sign_up? %>
-          <%= link_to t(".sign_up"), sign_up_path %>
-        <% end %>
-        <%= link_to t(".forgot_password"), new_password_path %>
+          <div class="other-links">
+          <% if Clearance.configuration.allow_sign_up? %>
+      
+            <%= link_to t(".sign_up"), sign_up_path %>
+          <% end %>
+          <%= link_to t(".forgot_password"), new_password_path %>
+          <div class="fb-login-button" data-max-rows="1" data-size="small" data-show-faces="false" data-auto-logout-link="false"></div>
+      
       </div>
     <% end %>
 </div>
 
-          <div class="login-help">
+      <!--     <div class="login-help">000000000
           <a href="#">Register</a> - <a href="#">Forgot Password</a>
-          </div>
+          </div> -->
         </div>
       </div>
       </div>
@@ -85,7 +87,7 @@
       <% end %>
     </li>
     <li><%= link_to "About Us", "#" %></li>
-    <li class="fb-login-button" data-max-rows="1" data-size="small" data-show-faces="false" data-auto-logout-link="false"></li>
+    
   </ul>
 </nav>
 
@@ -94,7 +96,7 @@
 
 
 
-
+<!-- <a href= 'auth/facebook'>Login in to facebook</a> -->
 
   <div id="fb-root"></div>
   <script>(function(d, s, id) {

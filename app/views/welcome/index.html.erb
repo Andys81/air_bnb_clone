@@ -1,2 +1,33 @@
-<h1>Welcome#index</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
+
+
+<div class="container"> 
+
+	<div class="content">
+
+		<div class="nav">
+			<ul class="links">
+				<li id="search"> Search </li>
+				<a href = /listings/new id="new_listing"> List property </a>
+		</div>
+
+
+		<div class="main">
+
+			<h2> all listings </h2>
+				<% Listing.order('price DESC').each do |l| %>
+				<%= link_to l.name, listing_path(l) %>				<br>
+
+				<br>	
+
+
+					<% end %>
+			</div>
+
+
+
+		</div>
+
+
+	</div>
+
+</div>

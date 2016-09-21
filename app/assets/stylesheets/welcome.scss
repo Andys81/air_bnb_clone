@@ -1,3 +1,30 @@
 // Place all the styles related to the Welcome controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.container {
+	padding: 0px;
+	margin: 0px;
+}
+
+.content {
+	padding: 10px;
+}
+
+.nav {
+	width: 150px;
+	float: left;
+	clear: both;
+}
+
+.nav ul {
+	list-style-type: none;
+	color: #262626;
+	padding: 0px; 
+}
+
+.main {
+	width: auto;
+	float: left;
+}
