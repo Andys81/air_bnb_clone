@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  get 'reservations/index'
+
   resources :listings
 
   get '/listing/:id' => 'listing#show'

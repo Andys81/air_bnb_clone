@@ -29,7 +29,7 @@ class ListingsController < ApplicationController
   def update
     if @listing.update(listing_params)
       flash[:success] = 'You have updated your listing successfully!'
-       redirect_to root_url
+       redirect_to listing_path(@listing)
     else 
       render :edit
     end
@@ -46,7 +46,7 @@ class ListingsController < ApplicationController
 
   private
   def listing_params
-    params.require(:listing).permit(:name, :description, :address, :country, :city, :price, :user_id)
+    params.require(:listing).permit(:name, :description, :address, :country, :city, :price, :user_id, :accomodates, {avatars:[]}, :property_type, {:tag_ids=>[]}, :bedrooms, :bathrooms )
   end 
 
 end

@@ -35,6 +35,13 @@ gem 'figaro'
 # Use bootstrap for CSS
 gem 'bootstrap', '~> 4.0.0.alpha4'
 
+# Use Carrierwave and Mini Magik for image uploads
+gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
+gem 'mini_magick'
+
+# Use Fog for image storage
+# gem 'fog'
+
 # Use tether for tool tips
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.1.0'
@@ -43,6 +50,10 @@ end
 # Use Omniauth to enable facebook login
 gem 'omniauth'
 gem 'omniauth-facebook'
+
+# Use these to enable date picker
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.17.42'
 
 # Use Unicorn as the app server
 # gem 'unicorn'

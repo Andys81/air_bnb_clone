@@ -1,12 +1,23 @@
+<%= image_tag (@listing.avatars[0].large.url) %>
 
 <ul> 
 	<li> <%= @listing.name %> </li>
 	<li> <%= @listing.description %> </li>
+	<li> <%= @listing.property_type %> </li>
 	<li> <%= @listing.address %> </li>
 	<li> <%= @listing.city %> </li>
 	<li> <%= @listing.country %> </li>
+	<li> Accomodates <%= @listing.accomodates %> </li>
+	<li> <%= @listing.bedrooms %> Bedrooms</li>
+	<li> <%= @listing.bathrooms %> Bathrooms</li>
 	<li> <%= @listing.price %> Ringits per night </li>
 </ul>
+	<p> Features: </p>
+	<% @listing.tags.each do |tag|%>
+		<p><%=tag.name%></p>
+	<%end %>
+
+
 
 <% if @listing.user_id == current_user.id %>
 		<p><%= link_to 'Remove this listing', listing_path(@listing), method: :delete %></p>

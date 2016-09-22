@@ -2,7 +2,10 @@
 
 <div class="container"> 
 
+
 	<div class="content">
+
+
 
 		<div class="nav">
 			<ul class="links">
@@ -13,8 +16,10 @@
 
 		<div class="main">
 
+
 			<h2> all listings </h2>
 				<% Listing.order('price DESC').each do |l| %>
+				<%= image_tag (l.avatars[0].square.url) %>
 				<%= link_to l.name, listing_path(l) %>				<br>
 
 				<br>	

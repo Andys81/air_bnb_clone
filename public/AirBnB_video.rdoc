@@ -1,0 +1,8 @@
+# code to embed AirBnB homepage video
+
+<div align="center" class="embed-responsive embed-responsive-16by9">
+   <video autoplay loop class="embed-responsive-item">
+       <source src="https://a0.muscache.com/airbnb/static/P1-background-vid-compressed-2.mp4" type="video/mp4">
+   </video>
+</div>
+

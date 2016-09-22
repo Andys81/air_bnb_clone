@@ -24,12 +24,40 @@
 		<%= f.text_field :city %>
 	</p>
 
+	<p id="new_listing_property_type">
+		<%= f.label :property_type %>
+		<%= f.select :property_type, [['Apartment','Apartment'],['House','House'],['Condominium','Condominium']] %>
+	</p>
+
+	<p id="new_listing_accomodates">
+		<%= f.label :accomodates %>
+		<%= f.number_field :accomodates %>
+	</p>
+
+	<p id="new_listing_bedrooms">
+		<%= f.label :bedrooms %>
+		<%= f.number_field :bedrooms %>
+	</p>
+
+		<p id="new_listing_bathrooms">
+		<%= f.label :bathrooms %>
+		<%= f.number_field :bathrooms %>
+	</p>
+
 	<p id="new_listing_price">
 		<%= f.label :price %>
 		<%= f.number_field :price %>
 	</p>
+
+	<p><%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) %></p>
+
+	<%= f.file_field :avatars, multiple: true %>
+
+
 	<p id="new_listing_submit_button">
 		<%= f.submit %>
 	</p>
+
+
 
 <%end%> 
