@@ -7,3 +7,8 @@
 	<li> <%= @listing.country %> </li>
 	<li> <%= @listing.price %> Ringits per night </li>
 </ul>
+
+<% if @listing.user_id == current_user.id %>
+		<p><%= link_to 'Remove this listing', listing_path(@listing), method: :delete %></p>
+		<p><%= link_to 'Edit this listing', edit_listing_path(@listing) %></p>
+<% end %>

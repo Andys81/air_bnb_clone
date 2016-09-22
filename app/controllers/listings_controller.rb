@@ -1,6 +1,6 @@
 class ListingsController < ApplicationController
 
-  before_action :find_listing, only: [:show, :edit, :destroy]
+  before_action :find_listing, only: [:show, :edit, :destroy, :update]
 
   def index
   	@listings = Listing.all # index function
@@ -23,8 +23,21 @@ class ListingsController < ApplicationController
     end 
   end
 
-  def destroy
+  def edit
+  end
 
+  def update
+    if @listing.update(listing_params)
+      flash[:success] = 'You have updated your listing successfully!'
+       redirect_to root_url
+    else 
+      render :edit
+    end
+  end
+
+  def destroy
+    @listing.destroy
+    redirect_to root_path
 	end
 
   def find_listing
