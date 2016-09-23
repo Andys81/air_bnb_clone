@@ -1,5 +1,56 @@
 <%= image_tag (@listing.avatars[0].large.url) %>
 
+
+
+<p><%= form_for @reservation do |f| %></p>
+<p> Check in / check out dates </p>
+<div class="container">
+    <div class='col-md-5'>
+        <div class="form-group">
+            <div class='input-group date' id='datetimepicker6'>
+                <%= f.text_field :start_date %>
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class='col-md-5'>
+        <div class="form-group">
+            <div class='input-group date' id='datetimepicker7'>
+                <%= f.text_field :end_date %>
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%= f.hidden_field :listing_id, :value => @listing.id %>
+
+<%= f.submit "book now!" %>
+
+<% end %>
+<script type="text/javascript">
+    $(function () {
+        $('#datetimepicker6').datetimepicker({format: 'DD/MM/YYYY'});
+        $('#datetimepicker7').datetimepicker({format: 'DD/MM/YYYY',
+            useCurrent: false //Important! See issue #1075
+        });
+        $("#datetimepicker6").on("dp.change", function (e) {
+            $('#datetimepicker7').data("DateTimePicker").minDate(e.date);
+        });
+        $("#datetimepicker7").on("dp.change", function (e) {
+            $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
+        });
+    });
+</script>
+
+
+
+
+
 <ul> 
 	<li> <%= @listing.name %> </li>
 	<li> <%= @listing.description %> </li>
@@ -22,4 +73,5 @@
 <% if @listing.user_id == current_user.id %>
 		<p><%= link_to 'Remove this listing', listing_path(@listing), method: :delete %></p>
 		<p><%= link_to 'Edit this listing', edit_listing_path(@listing) %></p>
+        <br>
 <% end %>

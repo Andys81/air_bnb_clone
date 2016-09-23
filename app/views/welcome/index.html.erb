@@ -18,8 +18,8 @@
 
 
 			<h2> all listings </h2>
-				<% Listing.order('price DESC').each do |l| %>
-				<%= image_tag (l.avatars[0].square.url) %>
+				<% @listings.each do |l| %>
+				<%= image_tag (l.avatars[0].medium.url) %>
 				<%= link_to l.name, listing_path(l) %>				<br>
 
 				<br>	
@@ -35,4 +35,10 @@
 
 	</div>
 
+</div>
+
+<div>
+	<% (1..@total_pages).each do |page| %>
+	<%= link_to page, controller: "welcome", action: "index", page: page %>&nbsp;
+	<% end %>
 </div>

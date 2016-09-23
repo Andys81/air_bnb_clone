@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
   
-  get 'reservations/index'
+  # get 'reservations/index'
+  resources :reservations # controller: "reservations"
 
-  resources :listings
 
+  resources :listings 
   get '/listing/:id' => 'listing#show'
 
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]

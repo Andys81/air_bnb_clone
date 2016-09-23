@@ -7,7 +7,7 @@ class ListingsController < ApplicationController
   end
 
   def show
-  	
+    @reservation = Reservation.new
   end
 
   def new
@@ -15,6 +15,7 @@ class ListingsController < ApplicationController
   end	
 
   def create
+    byebug
     @listing = current_user.listings.new(listing_params)
     if @listing.save
        redirect_to root_url
