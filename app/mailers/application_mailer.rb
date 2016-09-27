@@ -1,7 +1,9 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: "reservations@pairbnb.com"
+  
+
+  default from: "andy.smith.development.testing@gmail.com"
   layout 'mailer'
 
 
-  
+
 end
