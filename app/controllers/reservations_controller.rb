@@ -1,6 +1,6 @@
 class ReservationsController < ApplicationController
   
-  before_action :find_reservation, only: [:show, :destroy]
+  before_action :find_reservation, only: [:show, :destroy, :confirm_reservation]
   before_action :check_dates, only: [:create]
 
 
@@ -15,19 +15,23 @@ class ReservationsController < ApplicationController
 		# respond_to do |format|		
 			if @no_conflicts == true
 				@reservation.save
-				 # Sends email to user when reservation is created.
+
 				ReservationMailer.delay_for(10.seconds).confirmation_email(current_user) #.deliver_later
 	      # format.html { redirect_to @user, notice: 'Reservation was successfully created.' }
 	      # format.json { render :show, status: :created, location: @user }
 	      redirect_to root_url
     	else 
       	redirect_to listing_path(params[:reservation][:listing_id])
-      	#needed for email?
 	      # format.html { render :new }
 	      # format.json { render json: @user.errors, status: :unprocessable_entity }
     	end 
     # end
 	end
+
+	def confirm_reservation
+		@reservation.update(confirmed: true)
+	end
+
 
 	def destroy
 		@reservation.destroy
