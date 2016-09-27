@@ -16,7 +16,7 @@ class ReservationsController < ApplicationController
 			if @no_conflicts == true
 				@reservation.save
 				 # Sends email to user when reservation is created.
-				ReservationMailer.confirmation_email(current_user).deliver
+				ReservationMailer.delay_for(10.seconds).confirmation_email(current_user) #.deliver_later
 	      # format.html { redirect_to @user, notice: 'Reservation was successfully created.' }
 	      # format.json { render :show, status: :created, location: @user }
 	      redirect_to root_url

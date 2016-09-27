@@ -1,5 +1,7 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
-  
+  mount Sidekiq::Web, at: '/sidekiq'
   # get 'reservations/index'
   resources :reservations # controller: "reservations"
 
