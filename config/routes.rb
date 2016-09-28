@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   mount Sidekiq::Web, at: '/sidekiq'
   # get 'reservations/index'
   resources :reservations # controller: "reservations"
-
+  get '/reservations/confirm/:id' => 'reservation#confirm_reservation'
 
   resources :listings 
   get '/listing/:id' => 'listing#show'

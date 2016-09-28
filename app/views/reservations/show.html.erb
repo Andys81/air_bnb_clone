@@ -1,0 +1,5 @@
+<h1>Reservation confirmed!</h1>
+
+<p>Reservation number <%= @reservation.id %> has been confirmed.</p>
+    <%= link_to 'Confirm this reservation', reservation_path(@reservation), method: :patch %>
+

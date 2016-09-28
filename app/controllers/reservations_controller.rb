@@ -14,9 +14,12 @@ class ReservationsController < ApplicationController
 	def create
 		# respond_to do |format|		
 			if @no_conflicts == true
+				
 				@reservation.save
-
-				ReservationMailer.delay_for(10.seconds).confirmation_email(current_user) #.deliver_later
+				listing_id = @reservation.listing_id
+				@listing = Listing.find(listing_id)
+				
+				ReservationMailer.delay_for(2.seconds).confirmation_email(current_user, @listing, @reservation) #.deliver_later
 	      # format.html { redirect_to @user, notice: 'Reservation was successfully created.' }
 	      # format.json { render :show, status: :created, location: @user }
 	      redirect_to root_url
@@ -28,7 +31,8 @@ class ReservationsController < ApplicationController
     # end
 	end
 
-	def confirm_reservation
+	def confirm_reservation #update method confirms the booking
+		byebug
 		@reservation.update(confirmed: true)
 	end
 

@@ -1,5 +1,17 @@
-<h1>ReservationMailer#confirmation_email</h1>
+<h1>ReservationMailer#confirmation_email</h1> 
 
 <p>
   <%= @user.email %>, find me in app/views/reservation_mailer/confirmation_email.html.erb
-</p>
+
+<body>
+    <h1>Hi, <%= @user.email %></h1>
+    <p>
+      Congratulations! You have a reservation!
+    </p>
+    <p><% form_for @reservation do |f| %></p>
+    <p>
+      To confirm the reservation, follow this link: http://localhost:3000//reservations/confirm/<%= @reservation.id %>.
+
+    </p>
+    
+</body>
